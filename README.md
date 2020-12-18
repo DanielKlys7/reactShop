@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and modified by TSH team for the recruit process.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and modified by TSH team for the recruit process and then approached to solve by Daniel Klys.
 
 ## Quick Start
 
@@ -10,11 +10,7 @@ cd new-project/
 git clone git@github.com:TheSoftwareHouse/react-interview-starter-ts.git .
 rm -r .git
 npm install
-cd e2e
-npm install
-cd ..
 cp .env.dist .env
-cp .env.e2e.dist ./e2e/.env
 ```
 
 where `new-project` is your desired folder.
@@ -27,13 +23,17 @@ For E2E testing we are using the [Cypress](https://www.cypress.io/) framework. I
 
 In the project directory, you can run:
 
-### `e2e:run`
+### `docker build -t app:dev .`
 
-Runs Cypress E2E tests in a headless mode (the browser window is not visible)
+Builds an image upon which your container will be built.
 
-### `e2e:open`
+### `npm run dockerized`
 
-Opens the Cypress UI, allowing to run and watch E2E tests
+Sets up docker development environment in container, ready to be used on every device that has docker installed and image built.
+
+Learn more about [Docker](https://docs.docker.com/).
+
+### `npm run `
 
 ### `npm start`
 
