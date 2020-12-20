@@ -33,8 +33,6 @@ Sets up docker development environment in container, ready to be used on every d
 
 Learn more about [Docker](https://docs.docker.com/).
 
-### `npm run `
-
 ### `npm start`
 
 Runs the app in the development mode.<br />
