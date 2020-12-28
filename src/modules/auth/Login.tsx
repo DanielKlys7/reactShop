@@ -1,13 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { httpService } from 'core/services';
 import { AppRoute } from 'routing/AppRoute.enum';
-import { userContext } from 'modules/user/contexts/user';
+import { useUserContext } from 'modules/user/contexts/user';
 import { reactFormValueSetter } from 'common/helpers/reactFormValueSetter';
 
 export const Login = () => {
-    const { setCurrentUser } = useContext(userContext);
+    const { user, setCurrentUser } = useUserContext();
 
     const [username, setUsername] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -38,8 +37,14 @@ export const Login = () => {
                         />
                     </label>
                 </div>
-                <button type="submit" onClick={e => {}}>
-                    submit
+                <button
+                    type="submit"
+                    onClick={e => {
+                        e.preventDefault();
+                        setCurrentUser({ username, id: 0, avatar: 'default' });
+                    }}
+                >
+                    {user ? user.username : 'there is no user'}
                 </button>
             </form>
         </>
