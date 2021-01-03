@@ -22,6 +22,7 @@ export class AuthService {
       password: passwordToValidate,
     });
 
+    // set on 401 and 404 due to possible security issues
     if (response.status === 401 || response.status === 404) {
       return {
         errorMessage: 'Either username or password was wrong.',
