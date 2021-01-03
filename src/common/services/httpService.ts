@@ -1,8 +1,11 @@
 export class HttpService {
   constructor(protected readonly baseUrl: string) {}
 
-  GET(path: string) {
-    return this.makeRequest(path, HttpMethod.GET);
+  async GET(path: string) {
+    const response = await this.makeRequest(path, HttpMethod.GET);
+    const data = await response.json();
+
+    return data;
   }
 
   POST<T>(path: string, body?: T) {
@@ -16,7 +19,7 @@ export class HttpService {
     headers?: Record<string, string>,
     mode?: Cors,
   ) {
-    const url = `${this.baseUrl}/${route}`;
+    const url = `${this.baseUrl}${route}`;
     const stringifiedBody = JSON.stringify(body);
     const corsMode = mode || 'cors';
 

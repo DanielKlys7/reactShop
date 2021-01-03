@@ -1,11 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useQuery } from 'react-query';
+import { DebounceInput } from 'react-debounce-input';
 
-import { AppRoute } from 'routing/AppRoute.enum';
+import { httpService } from 'core/services';
+import { apiRoutes } from 'core/variablesConfig';
 
-export const Products = () => (
-  <>
-    <h2>Products page</h2>
-    <Link to={AppRoute.login}> Login </Link>
-  </>
-);
+export const Products = () => {
+  const [page, setPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(20);
+  const [isActive, setIsActive] = useState(false);
+  const [isPromo, setIsPromo] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const { data, isLoading, isError } = useQuery(
+    ['products', page, itemsPerPage, isActive, isPromo, search],
+    () =>
+      httpService.GET(
+        `${apiRoutes.product}?limit=${itemsPerPage}&page=${page}&promo=${isPromo}&active=${isActive}&search=${search}`,
+      ),
+    { keepPreviousData: true },
+  );
+
+  return (
+    <>
+      <DebounceInput
+        debounceTimeout={500}
+        value={search}
+        onChange={e => setSearch(e.target.value)}
+      />
+      <h2>Products page</h2>
+    </>
+  );
+};
