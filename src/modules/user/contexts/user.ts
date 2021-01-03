@@ -4,25 +4,25 @@ import { assertContextPresent } from 'common/helpers/assertContextPresent';
 import { User } from '../types';
 
 export interface UserContext {
-    user: User | null;
-    setCurrentUser: (currentUser: User) => void;
+  user: User | null;
+  setCurrentUser: (currentUser: User) => void;
 }
 
 export const useUser = (): UserContext => {
-    const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
-    return {
-        user,
-        setCurrentUser: setUser,
-    };
+  return {
+    user,
+    setCurrentUser: setUser,
+  };
 };
 
 export const useUserContext = () => {
-    const context = useContext(userContext);
+  const context = useContext(userContext);
 
-    assertContextPresent(context);
+  assertContextPresent(context);
 
-    return context;
+  return context;
 };
 
 export const userContext = createContext<UserContext | null>(null);

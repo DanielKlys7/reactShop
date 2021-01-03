@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { AppProviders } from 'common/providers/AppProviders';
+import { AppProviders } from 'core/providers/AppProviders';
 
 import { App } from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-    <AppProviders>
-        <App />
-    </AppProviders>,
-    document.getElementById('root'),
+  <AppProviders>
+    <App />
+  </AppProviders>,
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
