@@ -1,5 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import { jwt } from 'core/variablesConfig';
+import { jwt, apiRoutes } from 'core/variablesConfig';
 import { CookieService } from './cookieService';
 import { HttpService } from './httpService';
 
@@ -17,7 +17,7 @@ export class AuthService {
   ) {}
 
   async login(usernameToValidate: string, passwordToValidate: string) {
-    const response = await this.httpService.POST('user/login', {
+    const response = await this.httpService.POST(apiRoutes.login, {
       username: usernameToValidate,
       password: passwordToValidate,
     });
