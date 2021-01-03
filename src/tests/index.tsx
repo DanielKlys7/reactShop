@@ -1,15 +1,21 @@
-// see https://testing-library.com/docs/react-testing-library/setup#custom-render
+/* eslint-disable react/require-default-props */
 import React, { ReactNode } from 'react';
 import { MemoryRouter as Router } from 'react-router-dom';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { Queries } from '@testing-library/dom';
 
-const Wrapper = ({ children }: { children?: ReactNode }) => {
-  return <Router>{children}</Router>;
-};
+const Wrapper = ({ children }: { children?: ReactNode }) => (
+  <Router>{children}</Router>
+);
 
-function customRender(ui: React.ReactElement, options?: Omit<RenderOptions, 'queries'>): RenderResult;
-function customRender<Q extends Queries>(ui: React.ReactElement, options: RenderOptions<Q>): RenderResult<Q>;
+function customRender(
+  ui: React.ReactElement,
+  options?: Omit<RenderOptions, 'queries'>,
+): RenderResult;
+function customRender<Q extends Queries>(
+  ui: React.ReactElement,
+  options: RenderOptions<Q>,
+): RenderResult<Q>;
 function customRender<Q extends Queries>(
   ui: React.ReactElement,
   options?: RenderOptions<Q> | Omit<RenderOptions, 'queries'>,
