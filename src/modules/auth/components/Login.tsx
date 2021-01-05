@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { useUserContext } from 'modules/user/contexts/user';
 import { authService } from 'core/services';
-import { defaultAvatar } from 'core/variablesConfig';
 import { SingleFormField } from 'common/components/singleFormField';
 import { validationSchema } from '../config/validationSchema';
 
@@ -38,7 +37,7 @@ export const Login = () => {
       setCurrentUser({
         username: data.username!,
         id: data.uid!,
-        avatar: defaultAvatar(),
+        avatar: '',
       });
 
       history.push('/');
