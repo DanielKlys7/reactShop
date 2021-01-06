@@ -1,0 +1,61 @@
+import styled from 'styled-components';
+
+import { colors, breakpoints } from 'core/variablesConfig';
+import { Button } from 'common/components/Button';
+
+interface ImageProps {
+  isActive: boolean;
+}
+
+export const Wrapper = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  background: ${colors.white};
+  margin: 12px;
+  position: relative;
+
+  @media (min-width: ${breakpoints.desktop}) {
+    width: 20%;
+    height: 40%;
+  } ;
+`;
+
+export const Image = styled.img<ImageProps>`
+  height: 40%;
+  filter ${({ isActive }) => (isActive ? 'none' : 'grayscale(100%)')}
+`;
+
+export const Header = styled.p`
+  font-size: 1.6rem;
+  color: ${colors.gray500};
+  margin: 1.6rem 1.6rem 0 1.6rem;
+`;
+
+export const Description = styled.p`
+  font-size: 1.4rem;
+  color: ${colors.gray400};
+  margin: 1.4rem 1.4rem 0 1.4rem;
+`;
+
+export const DetailsButton = styled(Button)`
+  width: calc(100% - 32px);
+  margin: 18px 16px 24px 16px;
+  align-self: start;
+`;
+
+export const PromoBanner = styled.span`
+  display: block;
+  width: 30%;
+  height: 24px;
+  background-color: ${colors.secondary};
+  position: absolute;
+  top: 1.6rem;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  text-align: center;
+  color: ${colors.white};
+`;

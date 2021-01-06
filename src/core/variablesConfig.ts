@@ -1,3 +1,5 @@
+import { getScreenResolution } from 'common/helpers/getScreenResolution';
+
 export const jwt = 'jwt';
 
 export const apiRoutes: Record<string, string> = {
@@ -7,7 +9,7 @@ export const apiRoutes: Record<string, string> = {
 
 export const itemsPerPage = 8;
 export const siblingRange = 1;
-export const visibilityOnStartAndEnd = 3;
+export const visibilityOnStartAndEnd = 1;
 
 export const colors = {
   white: '#FFFFFF',
@@ -19,4 +21,11 @@ export const colors = {
   gray300: '#B9BDCF',
   gray400: '#9194A5',
   gray500: '#1A1B1D',
+};
+
+export const breakpoints = {
+  phone: '576px',
+  tablet: '768px',
+  smallerDesktop: '992px',
+  desktop: '1200px',
 };

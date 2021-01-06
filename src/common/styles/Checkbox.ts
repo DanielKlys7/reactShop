@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors } from 'core/variablesConfig';
 
 export const StyledLabel = styled.label`
-  font-size: 1.4em;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
 `;
@@ -24,7 +24,7 @@ export const StyledCheckmark = styled.span`
   height: 24px;
   border-radius: 4px;
   background-color: ${colors.primary};
-  margin-right: 8px;
+  margin-right: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;

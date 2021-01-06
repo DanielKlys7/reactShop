@@ -4,14 +4,27 @@ import { DebounceInput } from 'react-debounce-input';
 
 import { httpService } from 'core/services';
 import { apiRoutes, itemsPerPage } from 'core/variablesConfig';
-import { createProductApiRequest } from 'common/helpers/createProductApiRequest';
+import { createProductApiRequest, minutesToMs } from 'common/helpers';
 import { Loader } from 'common/components/Loader';
 import { Pagination } from 'common/components/Pagination';
+import { Checkbox } from 'common/components/Checkbox';
+import { ProductCard } from './ProductCard';
+import { ContentWrapper } from '../styles/Products';
+
+interface ShopItem {
+  id: number;
+  name: string;
+  description: string;
+  rating: number;
+  image: string;
+  promo: boolean;
+  active: boolean;
+}
 
 export const Products = () => {
   const [page, setPage] = useState(1);
-  const [isActive, setIsActive] = useState(false);
-  const [isPromo, setIsPromo] = useState(false);
+  const [isActive, setIsActive] = useState<boolean>(true);
+  const [isPromo, setIsPromo] = useState<boolean>(false);
   const [search, setSearch] = useState('');
 
   const { data, isLoading, isError } = useQuery(
@@ -26,7 +39,7 @@ export const Products = () => {
           active: isActive,
         }),
       ),
-    { keepPreviousData: true },
+    { keepPreviousData: true, staleTime: minutesToMs(10) },
   );
 
   if (isLoading) return <Loader />;
@@ -42,13 +55,31 @@ export const Products = () => {
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
-        {data && (
-          <Pagination
-            amountOfPages={data.meta.totalPages}
-            currentPage={page}
-            setPage={setPage}
-          />
-        )}
+        <Checkbox
+          label="promo"
+          isActive={isPromo}
+          onClick={() => setIsPromo(wasPromo => !wasPromo)}
+        />
+        <Checkbox
+          label="active"
+          isActive={isActive}
+          onClick={() => setIsActive(wasActive => !wasActive)}
+        />
+        <Pagination amountOfPages={data.meta.totalPages} currentPage={page} setPage={setPage} />
+
+        <ContentWrapper>
+          {data.items.map(({ image, name, description, rating, promo, active }: ShopItem) => (
+            <ProductCard
+              key={`${name}${description}`}
+              image={image}
+              name={name}
+              description={description}
+              rating={rating}
+              isPromo={promo}
+              isActive={active}
+            />
+          ))}
+        </ContentWrapper>
       </>
     )
   );

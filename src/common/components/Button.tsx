@@ -7,26 +7,24 @@ export interface ButtonProps {
   children: React.ReactNode;
   disabled?: boolean;
   isFilled?: boolean;
-  width?: string | number;
+  className?: string;
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
   children,
   isFilled = true,
   disabled = false,
-  width = 20,
-}) => {
-  return (
-    <StyledButton
-      isFilled={isFilled}
-      disabled={disabled}
-      widthInPercents={width}
-      white={colors.white}
-      primary={colors.primary}
-      secondary={colors.primaryDark}
-      disabledColor={colors.gray400}
-    >
-      {children}
-    </StyledButton>
-  );
-};
+  className,
+}) => (
+  <StyledButton
+    className={className}
+    isFilled={isFilled}
+    disabled={disabled}
+    white={colors.white}
+    primary={colors.primary}
+    secondary={colors.primaryDark}
+    disabledColor={colors.gray400}
+  >
+    {children}
+  </StyledButton>
+);

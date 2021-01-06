@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { usePagination } from '@material-ui/lab/Pagination';
 
+import { siblingRange, visibilityOnStartAndEnd } from 'core/variablesConfig';
 import { capitalize } from 'common/helpers/captialize';
 import { StyledNav, StyledUl, StyledButton } from '../styles/Pagination';
 
@@ -21,8 +22,8 @@ export const Pagination: React.FunctionComponent<PaginationProps> = ({
     hideNextButton: true,
     showFirstButton: true,
     showLastButton: true,
-    boundaryCount: 1,
-    siblingCount: 1,
+    boundaryCount: visibilityOnStartAndEnd,
+    siblingCount: siblingRange,
     onChange: (_e, value) => setPage(value),
   });
 

@@ -17,13 +17,8 @@ export const StyledUl = styled.ul`
 export const StyledButton = styled.button<StyledButtonProps>`
   background-color: transparent;
   border: none;
-  margin: ${({ isFirstOrLastElement }) =>
-    isFirstOrLastElement ? '0 16px' : '0 8px'};
+  margin: ${({ isFirstOrLastElement }) => (isFirstOrLastElement ? '0 1.6rem' : '0 1.6rem')};
   color: ${({ isFirstOrLastElement, isSelected }) =>
-    isSelected
-      ? isFirstOrLastElement
-        ? colors.gray400
-        : colors.primary
-      : colors.gray500};
+    isSelected ? (isFirstOrLastElement ? colors.gray400 : colors.primary) : colors.gray500};
   border: none;
 `;
