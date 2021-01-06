@@ -8,7 +8,7 @@ import { authService } from 'core/services';
 import { SingleFormField } from 'common/components/singleFormField';
 import { validationSchema } from '../config/validationSchema';
 
-interface LoginFormData {
+export interface LoginFormData {
   username: string;
   password: string;
 }
@@ -22,13 +22,7 @@ export const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async ({
-    username,
-    password,
-  }: {
-    username: string;
-    password: string;
-  }) => {
+  const onSubmit = async ({ username, password }: { username: string; password: string }) => {
     const data = await authService.login(username, password);
 
     setError(() => (data.errorMessage ? data.errorMessage : null));
