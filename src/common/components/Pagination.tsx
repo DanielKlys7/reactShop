@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from 'react';
 import { usePagination } from '@material-ui/lab/Pagination';
 
 import { siblingRange, visibilityOnStartAndEnd } from 'core/variablesConfig';
-import { capitalize } from 'common/helpers/captialize';
+import { capitalize } from 'common/helpers';
 import { StyledNav, StyledUl, StyledButton } from '../styles/Pagination';
 
 interface PaginationProps {

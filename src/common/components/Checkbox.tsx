@@ -1,10 +1,6 @@
 import React from 'react';
 
-import {
-  StyledCheckbox,
-  StyledLabel,
-  StyledCheckmark,
-} from 'common/styles/Checkbox';
+import { StyledCheckbox, StyledLabel, StyledCheckmark } from 'common/styles/Checkbox';
 import { ReactComponent as Active } from '../assets/active.svg';
 
 interface CheckboxProps {
@@ -13,11 +9,7 @@ interface CheckboxProps {
   onClick: () => void;
 }
 
-export const Checkbox: React.FunctionComponent<CheckboxProps> = ({
-  label,
-  isActive,
-  onClick,
-}) => (
+export const Checkbox: React.FunctionComponent<CheckboxProps> = ({ label, isActive, onClick }) => (
   <StyledLabel onClick={onClick}>
     {!isActive ? (
       <StyledCheckbox />

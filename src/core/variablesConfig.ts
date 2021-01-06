@@ -1,5 +1,3 @@
-import { getScreenResolution } from 'common/helpers/getScreenResolution';
-
 export const jwt = 'jwt';
 
 export const apiRoutes: Record<string, string> = {
