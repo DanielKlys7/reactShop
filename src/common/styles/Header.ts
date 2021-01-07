@@ -7,16 +7,19 @@ import { Button } from 'common/components/Button';
 export const HeaderWrapper = styled.header`
   display: flex;
   background-color: ${colors.white};
-  height: 30%;
+  height: 20%;
   align-items: start;
   width: 100%;
   flex-direction: column;
   position: relative;
+  padding-bottom: 5vh;
+  margin-bottom: 3vh;
 
   @media (min-width: ${breakpoints.desktop}) {
     height: 10%;
     flex-direction: row;
     align-items: center;
+    padding: 0;
   }
 `;
 
@@ -25,7 +28,7 @@ export const Logo = styled.h1`
   margin-left: 5%;
 
   @media (min-width: ${breakpoints.desktop}) {
-    margin-left: calc(10% + 1.25%);
+    margin-left: calc(15% + 1.25%);
   }
 `;
 
@@ -48,7 +51,7 @@ export const Avatar = styled.img`
 
   @media (min-width: ${breakpoints.desktop}) {
     position: static;
-    margin: 0 calc(10% + 1.25%) 0 auto;
+    margin: 0 calc(15% + 1.25% - 0.67em) 0 auto;
     height: 80%;
   }
 `;
@@ -63,7 +66,7 @@ export const LoginButton = styled(Button)`
   @media (min-width: ${breakpoints.desktop}) {
     position: static;
     width: 10%;
-    margin: 0 calc(10% + 1.25%) 0 auto;
+    margin: 0 calc(15% + 1.25% - 0.67em) 0 auto;
     height: 40px;
   }
 `;

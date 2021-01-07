@@ -8,8 +8,8 @@ interface ImageProps {
 }
 
 export const Wrapper = styled.div`
-  width: 100%;
-  height: 70%;
+  width: 90%;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
@@ -19,10 +19,10 @@ export const Wrapper = styled.div`
   position: relative;
 
   @media (min-width: ${breakpoints.desktop}) {
-    margin: 1.25%;
+    margin: 0.5% 1.25%;
     width: 22.5%;
-    height: 37.5%;
-  } ;
+    height: 40vh;
+  }
 `;
 
 export const Image = styled.img<ImageProps>`

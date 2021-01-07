@@ -31,7 +31,7 @@ export const ProductCard: React.FunctionComponent<ProductCardProps> = ({
   <Wrapper>
     <Image src={image} isActive={isActive} />
     <Header>{name}</Header>
-    <Description>{truncate(description, 60)}</Description>
+    <Description>{truncate(description, 40)}</Description>
     <Rating rating={rating} />
     <DetailsButton disabled={!isActive}>Show details</DetailsButton>
     {isPromo && <PromoBanner>Promo</PromoBanner>}

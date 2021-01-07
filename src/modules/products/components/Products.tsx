@@ -8,7 +8,8 @@ import { Loader } from 'common/components/Loader';
 import { Pagination } from 'common/components/Pagination';
 import { Header } from 'common/components/Header';
 import { ProductCard } from './ProductCard';
-import { ContentWrapper } from '../styles/Products';
+import { ContentWrapper, ItemsWrapper } from '../styles/Products';
+import { Empty } from 'common/components/Empty';
 
 interface ShopItem {
   id: number;
@@ -47,28 +48,33 @@ export const Products = () => {
 
   return (
     data && (
-      <>
+      <ContentWrapper>
         <Header
           active={{ isActive, setIsActive }}
           promo={{ isPromo, setIsPromo }}
           search={{ search, setSearch }}
         />
-
-        <ContentWrapper>
-          {data.items.map(({ image, name, description, rating, promo, active }: ShopItem) => (
-            <ProductCard
-              key={`${name}${description}`}
-              image={image}
-              name={name}
-              description={description}
-              rating={rating}
-              isPromo={promo}
-              isActive={active}
-            />
-          ))}
-        </ContentWrapper>
-        {/* <Pagination amountOfPages={data.meta.totalPages} currentPage={page} setPage={setPage} /> */}
-      </>
+        {data.items.length > 0 ? (
+          <>
+            <ItemsWrapper>
+              {data.items.map(({ image, name, description, rating, promo, active }: ShopItem) => (
+                <ProductCard
+                  key={`${name}${description}`}
+                  image={image}
+                  name={name}
+                  description={description}
+                  rating={rating}
+                  isPromo={promo}
+                  isActive={active}
+                />
+              ))}
+            </ItemsWrapper>
+            <Pagination amountOfPages={data.meta.totalPages} currentPage={page} setPage={setPage} />
+          </>
+        ) : (
+          <Empty />
+        )}
+      </ContentWrapper>
     )
   );
 };
