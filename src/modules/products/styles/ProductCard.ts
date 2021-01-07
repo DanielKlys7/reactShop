@@ -36,13 +36,13 @@ export const Image = styled.img<ImageProps>`
 `;
 
 export const Header = styled.p`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: ${colors.gray500};
   margin: 1.6rem 1.6rem 0 1.6rem;
 `;
 
 export const Description = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: ${colors.gray400};
   margin: 1.4rem 1.4rem 0 1.4rem;
 `;
