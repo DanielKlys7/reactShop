@@ -3,13 +3,23 @@ import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useUserContext } from 'modules/user/contexts/user';
 import { authService } from 'core/services';
-import { defaultAvatar } from 'core/variablesConfig';
-import { SingleFormField } from 'common/components/singleFormField';
+import { SingleFormField } from 'common/components';
+import Avatar from 'common/assets/Avatar.png';
+import { useUserContext } from 'modules/user/contexts/user';
 import { validationSchema } from '../config/validationSchema';
+import {
+  LoginPage,
+  LoginWrapper,
+  Image,
+  Logo,
+  Text,
+  Input,
+  StyledButton,
+  RetrivePassword,
+} from '../styles/Login';
 
-interface LoginFormData {
+export interface LoginFormData {
   username: string;
   password: string;
 }
@@ -23,13 +33,7 @@ export const Login = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async ({
-    username,
-    password,
-  }: {
-    username: string;
-    password: string;
-  }) => {
+  const onSubmit = async ({ username, password }: { username: string; password: string }) => {
     const data = await authService.login(username, password);
 
     setError(() => (data.errorMessage ? data.errorMessage : null));
@@ -38,7 +42,7 @@ export const Login = () => {
       setCurrentUser({
         username: data.username!,
         id: data.uid!,
-        avatar: defaultAvatar(),
+        avatar: Avatar,
       });
 
       history.push('/');
@@ -46,24 +50,29 @@ export const Login = () => {
   };
 
   return (
-    <>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <SingleFormField fieldName="username">
-          <>
-            <input name="username" ref={register} />
-            {errors.username?.message && <p>{errors.username.message}</p>}
-          </>
-        </SingleFormField>
-        <SingleFormField fieldName="password">
-          <>
-            <input name="password" type="password" ref={register} />
-            {errors.password?.message && <p>{errors.password.message}</p>}
-          </>
-        </SingleFormField>
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
-      </form>
-    </>
+    <LoginPage>
+      <Image />
+      <LoginWrapper>
+        <Logo>join.tsh.io</Logo>
+        <Text>Login</Text>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <SingleFormField fieldName="Username">
+            <>
+              <Input name="username" ref={register} placeholder="Enter username" />
+              {errors.username?.message && <p>{errors.username.message}</p>}
+            </>
+          </SingleFormField>
+          <SingleFormField fieldName="Uassword">
+            <>
+              <Input name="password" type="password" ref={register} placeholder="Enter password" />
+              {errors.password?.message && <p>{errors.password.message}</p>}
+            </>
+          </SingleFormField>
+          <StyledButton type="submit">Log in</StyledButton>
+          {error && <p>{error}</p>}
+        </form>
+        <RetrivePassword>Forgot password?</RetrivePassword>
+      </LoginWrapper>
+    </LoginPage>
   );
 };

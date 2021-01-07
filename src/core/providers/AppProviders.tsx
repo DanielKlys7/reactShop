@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { UserProvider, useUser } from 'modules/user/contexts/user';
+import { GlobalStyle } from 'core/globalStyle';
 import { AppProvidersProps } from './AppProviders.types';
 
 export const AppProviders = ({ children }: AppProvidersProps) => {
@@ -11,12 +12,15 @@ export const AppProviders = ({ children }: AppProvidersProps) => {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
+    <>
+      <GlobalStyle />
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen />
 
-      <UserProvider value={user}>
-        <Router>{children}</Router>
-      </UserProvider>
-    </QueryClientProvider>
+        <UserProvider value={user}>
+          <Router>{children}</Router>
+        </UserProvider>
+      </QueryClientProvider>
+    </>
   );
 };
