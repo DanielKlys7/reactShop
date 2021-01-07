@@ -18,6 +18,11 @@ export const Wrapper = styled.div`
   margin: 16px 1.25%;
   position: relative;
 
+  @media (min-width: ${breakpoints.tablet}) {
+    width: 40%;
+    height: 50vh;
+  }
+
   @media (min-width: ${breakpoints.desktop}) {
     margin: 0.5% 1.25%;
     width: 22.5%;

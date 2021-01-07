@@ -7,7 +7,7 @@ import { Button } from 'common/components';
 export const HeaderWrapper = styled.header`
   display: flex;
   background-color: ${colors.white};
-  height: 25%;
+  height: 30%;
   align-items: start;
   width: 100%;
   flex-direction: column;

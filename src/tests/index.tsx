@@ -4,9 +4,7 @@ import { MemoryRouter as Router } from 'react-router-dom';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { Queries } from '@testing-library/dom';
 
-const Wrapper = ({ children }: { children?: ReactNode }) => (
-  <Router>{children}</Router>
-);
+const Wrapper = ({ children }: { children?: ReactNode }) => <Router>{children}</Router>;
 
 function customRender(
   ui: React.ReactElement,

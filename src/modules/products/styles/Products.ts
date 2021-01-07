@@ -12,7 +12,7 @@ export const ContentWrapper = styled.main`
 
 export const ItemsWrapper = styled.div`
   display: flex;
-  justify-content: start;
+  justify-content: center;
   width: 100%;
   margin: 0 auto;
   flex-wrap: wrap;
@@ -20,5 +20,6 @@ export const ItemsWrapper = styled.div`
 
   @media (min-width: ${breakpoints.desktop}) {
     width: 70%;
+    justify-content: start;
   }
 `;
