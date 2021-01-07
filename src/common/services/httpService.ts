@@ -1,3 +1,16 @@
+enum HttpMethod {
+  GET = 'GET',
+  POST = 'POST',
+  PATCH = 'PATCH',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+}
+enum Cors {
+  NoCors = 'no-cors',
+  Cors = 'cors',
+  SameOrigin = 'same-origin',
+}
+
 export class HttpService {
   constructor(protected readonly baseUrl: string) {}
 
@@ -30,17 +43,4 @@ export class HttpService {
       headers: headers || { 'Content-type': 'application/json' },
     });
   }
-}
-
-enum HttpMethod {
-  GET = 'GET',
-  POST = 'POST',
-  PATCH = 'PATCH',
-  PUT = 'PUT',
-  DELETE = 'DELETE',
-}
-enum Cors {
-  NoCors = 'no-cors',
-  Cors = 'cors',
-  SameOrigin = 'same-origin',
 }
