@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-import { colors } from 'core/variablesConfig';
+import { breakpoints, colors } from 'core/variablesConfig';
 
 export const StyledLabel = styled.label`
   font-size: 1.4rem;
   display: flex;
   align-items: center;
+  margin-left: 5%;
+
+  @media (min-width: ${breakpoints.desktop}) {
+    margin-left: 2.4rem;
+  }
 `;
 
 export const StyledCheckbox = styled.div`
@@ -16,7 +21,6 @@ export const StyledCheckbox = styled.div`
   border: 1px solid ${colors.gray500};
   box-sizing: border-box;
   border-radius: 4px;
-  margin-right: 8px;
 `;
 
 export const StyledCheckmark = styled.span`
@@ -24,8 +28,11 @@ export const StyledCheckmark = styled.span`
   height: 24px;
   border-radius: 4px;
   background-color: ${colors.primary};
-  margin-right: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const StyledLabelText = styled.span`
+  margin-left: 0.8rem;
 `;

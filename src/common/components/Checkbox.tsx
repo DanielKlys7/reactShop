@@ -1,7 +1,13 @@
 import React from 'react';
 
-import { StyledCheckbox, StyledLabel, StyledCheckmark } from 'common/styles/Checkbox';
+import {
+  StyledCheckbox,
+  StyledLabel,
+  StyledCheckmark,
+  StyledLabelText,
+} from 'common/styles/Checkbox';
 import { ReactComponent as Active } from '../assets/active.svg';
+import { capitalize } from 'common/helpers';
 
 interface CheckboxProps {
   label: string;
@@ -18,6 +24,6 @@ export const Checkbox: React.FunctionComponent<CheckboxProps> = ({ label, isActi
         <Active />
       </StyledCheckmark>
     )}
-    {label}
+    <StyledLabelText>{capitalize(label)}</StyledLabelText>
   </StyledLabel>
 );

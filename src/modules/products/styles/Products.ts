@@ -9,7 +9,7 @@ export const ContentWrapper = styled.main`
   height: 100%;
   margin: 0 auto;
   flex-wrap: wrap;
-  align-content: flex-start;
+  align-content: start;
 
   @media (min-width: ${breakpoints.desktop}) {
     width: 80%;

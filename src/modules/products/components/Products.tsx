@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { DebounceInput } from 'react-debounce-input';
 
 import { httpService } from 'core/services';
 import { apiRoutes, itemsPerPage } from 'core/variablesConfig';
 import { createProductApiRequest, minutesToMs } from 'common/helpers';
 import { Loader } from 'common/components/Loader';
 import { Pagination } from 'common/components/Pagination';
-import { Checkbox } from 'common/components/Checkbox';
+import { Header } from 'common/components/Header';
 import { ProductCard } from './ProductCard';
 import { ContentWrapper } from '../styles/Products';
 
@@ -49,23 +48,11 @@ export const Products = () => {
   return (
     data && (
       <>
-        <h2>Products page</h2>
-        <DebounceInput
-          debounceTimeout={500}
-          value={search}
-          onChange={e => setSearch(e.target.value)}
+        <Header
+          active={{ isActive, setIsActive }}
+          promo={{ isPromo, setIsPromo }}
+          search={{ search, setSearch }}
         />
-        <Checkbox
-          label="promo"
-          isActive={isPromo}
-          onClick={() => setIsPromo(wasPromo => !wasPromo)}
-        />
-        <Checkbox
-          label="active"
-          isActive={isActive}
-          onClick={() => setIsActive(wasActive => !wasActive)}
-        />
-        <Pagination amountOfPages={data.meta.totalPages} currentPage={page} setPage={setPage} />
 
         <ContentWrapper>
           {data.items.map(({ image, name, description, rating, promo, active }: ShopItem) => (
@@ -80,6 +67,7 @@ export const Products = () => {
             />
           ))}
         </ContentWrapper>
+        {/* <Pagination amountOfPages={data.meta.totalPages} currentPage={page} setPage={setPage} /> */}
       </>
     )
   );

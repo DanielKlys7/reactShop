@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { truncate } from 'common/helpers';
 import {
   Wrapper,
   Image,
@@ -30,7 +31,7 @@ export const ProductCard: React.FunctionComponent<ProductCardProps> = ({
   <Wrapper>
     <Image src={image} isActive={isActive} />
     <Header>{name}</Header>
-    <Description>{description}</Description>
+    <Description>{truncate(description, 60)}</Description>
     <Rating rating={rating} />
     <DetailsButton disabled={!isActive}>Show details</DetailsButton>
     {isPromo && <PromoBanner>Promo</PromoBanner>}

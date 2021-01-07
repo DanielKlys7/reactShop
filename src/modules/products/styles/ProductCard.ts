@@ -15,12 +15,13 @@ export const Wrapper = styled.div`
   border-radius: 8px;
   overflow: hidden;
   background: ${colors.white};
-  margin: 12px;
+  margin: 16px 1.25%;
   position: relative;
 
   @media (min-width: ${breakpoints.desktop}) {
-    width: 20%;
-    height: 40%;
+    margin: 1.25%;
+    width: 22.5%;
+    height: 37.5%;
   } ;
 `;
 
