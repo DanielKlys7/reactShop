@@ -1,21 +1,17 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { usePagination } from '@material-ui/lab/Pagination';
 
 import { siblingRange, visibilityOnStartAndEnd } from 'core/variablesConfig';
 import { capitalize } from 'common/helpers';
+import { useQueryParamsContext } from 'modules/products/contexts/query';
 import { StyledNav, StyledUl, StyledButton } from '../styles/Pagination';
 
 interface PaginationProps {
   amountOfPages: number;
-  currentPage: number;
-  setPage: Dispatch<SetStateAction<number>>;
 }
 
-export const Pagination: React.FunctionComponent<PaginationProps> = ({
-  amountOfPages,
-  currentPage,
-  setPage,
-}) => {
+export const Pagination: React.FunctionComponent<PaginationProps> = ({ amountOfPages }) => {
+  const { page: currentPage, setPage } = useQueryParamsContext();
   const { items } = usePagination({
     count: amountOfPages,
     hidePrevButton: true,

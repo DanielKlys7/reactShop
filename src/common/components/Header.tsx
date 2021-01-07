@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 
 import {
   HeaderWrapper,
@@ -9,44 +9,28 @@ import {
   StyledLink,
 } from 'common/styles/Header';
 import { useUserContext } from 'modules/user/contexts/user';
-
+import { useQueryParamsContext } from 'modules/products/contexts/query';
 import { Checkbox } from './Checkbox';
 import { SearchBar } from './SearchBar';
 
-type ReactSetState<T> = Dispatch<SetStateAction<T>>;
-
-export interface HeaderProps {
-  active: {
-    isActive: boolean;
-    setIsActive: ReactSetState<boolean>;
-  };
-  promo: {
-    isPromo: boolean;
-    setIsPromo: ReactSetState<boolean>;
-  };
-  search: {
-    search: string;
-    setSearch: ReactSetState<string>;
-  };
-}
-
-export const Header: React.FunctionComponent<HeaderProps> = ({ active, promo, search }) => {
+export const Header: React.FunctionComponent = () => {
+  const { search, setSearch, isPromo, setIsPromo, isActive, setIsActive } = useQueryParamsContext();
   const { user } = useUserContext();
 
   return (
     <HeaderWrapper>
       <Logo>join.tsh.io</Logo>
-      <SearchBar search={search.search} setSearch={search.setSearch} />
+      <SearchBar search={search} setSearch={setSearch} />
       <Checkboxes>
         <Checkbox
           label="promo"
-          isActive={promo.isPromo}
-          onClick={() => promo.setIsPromo(wasPromo => !wasPromo)}
+          isActive={isPromo}
+          onClick={() => setIsPromo((wasPromo: boolean) => !wasPromo)}
         />
         <Checkbox
           label="active"
-          isActive={active.isActive}
-          onClick={() => active.setIsActive(wasActive => !wasActive)}
+          isActive={isActive}
+          onClick={() => setIsActive((wasActive: boolean) => !wasActive)}
         />
       </Checkboxes>
       {user ? (

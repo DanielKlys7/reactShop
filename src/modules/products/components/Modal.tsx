@@ -1,10 +1,11 @@
 import React from 'react';
 
+import { SetState } from 'common/types/ReactSetStateAction';
 import { StyledModal, Image, Header, Description } from '../styles/Modal';
 
 interface ItemModalProps {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: SetState<boolean>;
   name: string;
   description: string;
   image: string;

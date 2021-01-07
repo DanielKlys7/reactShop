@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 
 import { httpService } from 'core/services';
@@ -7,6 +7,7 @@ import { createProductApiRequest, minutesToMs } from 'common/helpers';
 import { Loader, Pagination, Empty, Header } from 'common/components';
 import { ProductCard } from './ProductCard';
 import { ContentWrapper, ItemsWrapper } from '../styles/Products';
+import { useQueryParamsContext } from '../contexts/query';
 
 interface ShopItem {
   id: number;
@@ -19,11 +20,7 @@ interface ShopItem {
 }
 
 export const Products = () => {
-  const [page, setPage] = useState(1);
-  const [isActive, setIsActive] = useState<boolean>(true);
-  const [isPromo, setIsPromo] = useState<boolean>(false);
-  const [search, setSearch] = useState('');
-
+  const { page, isActive, isPromo, search } = useQueryParamsContext();
   const { data, isLoading, isError } = useQuery(
     ['products', page, itemsPerPage, isActive, isPromo, search],
     () =>
@@ -42,11 +39,7 @@ export const Products = () => {
   if (isLoading) {
     return (
       <ContentWrapper>
-        <Header
-          active={{ isActive, setIsActive }}
-          promo={{ isPromo, setIsPromo }}
-          search={{ search, setSearch }}
-        />
+        <Header />
         <Loader />
       </ContentWrapper>
     );
@@ -55,11 +48,7 @@ export const Products = () => {
   if (isError) {
     return (
       <ContentWrapper>
-        <Header
-          active={{ isActive, setIsActive }}
-          promo={{ isPromo, setIsPromo }}
-          search={{ search, setSearch }}
-        />
+        <Header />
         <Empty />
       </ContentWrapper>
     );
@@ -68,11 +57,7 @@ export const Products = () => {
   return (
     data && (
       <ContentWrapper>
-        <Header
-          active={{ isActive, setIsActive }}
-          promo={{ isPromo, setIsPromo }}
-          search={{ search, setSearch }}
-        />
+        <Header />
         {data.items.length > 0 ? (
           <>
             <ItemsWrapper>
@@ -88,7 +73,7 @@ export const Products = () => {
                 />
               ))}
             </ItemsWrapper>
-            <Pagination amountOfPages={data.meta.totalPages} currentPage={page} setPage={setPage} />
+            <Pagination amountOfPages={data.meta.totalPages} />
           </>
         ) : (
           <Empty />
