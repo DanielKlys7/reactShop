@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 import { colors, breakpoints } from 'core/variablesConfig';
-import { Button } from 'common/components/Button';
+import { Button } from 'common/components';
 
 interface ImageProps {
   isActive: boolean;
 }
 
 export const Wrapper = styled.div`
-  width: 90%;
+  width: 80%;
   height: 60vh;
   display: flex;
   flex-direction: column;

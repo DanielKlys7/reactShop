@@ -6,8 +6,8 @@ import {
   StyledCheckmark,
   StyledLabelText,
 } from 'common/styles/Checkbox';
-import { ReactComponent as Active } from '../assets/active.svg';
 import { capitalize } from 'common/helpers';
+import { ReactComponent as Active } from '../assets/active.svg';
 
 interface CheckboxProps {
   label: string;

@@ -2,18 +2,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import { breakpoints, colors } from 'core/variablesConfig';
-import { Button } from 'common/components/Button';
+import { Button } from 'common/components';
 
 export const HeaderWrapper = styled.header`
   display: flex;
   background-color: ${colors.white};
-  height: 20%;
+  height: 25%;
   align-items: start;
   width: 100%;
   flex-direction: column;
   position: relative;
-  padding-bottom: 5vh;
-  margin-bottom: 3vh;
+  box-sizing: border-box;
+  margin: 0 0 3vh 0;
+  padding: 0 10vw 5vh 10vw;
 
   @media (min-width: ${breakpoints.desktop}) {
     height: 10%;
@@ -25,7 +26,7 @@ export const HeaderWrapper = styled.header`
 
 export const Logo = styled.h1`
   font-size: 2.4rem;
-  margin-left: 5%;
+  margin: 1.6rem 0;
 
   @media (min-width: ${breakpoints.desktop}) {
     margin-left: calc(15% + 1.25%);
@@ -33,12 +34,11 @@ export const Logo = styled.h1`
 `;
 
 export const Checkboxes = styled.div`
-  width: 100%;
   display: flex;
   margin-top: 16px;
 
   @media (min-width: ${breakpoints.desktop}) {
-    margin: 0;
+    margin: 0 0 0 1.6rem;
   }
 `;
 
@@ -47,7 +47,7 @@ export const Avatar = styled.img`
   border-radius: 50%;
   position: absolute;
   top: 1.2rem;
-  right: 5%;
+  right: 10%;
 
   @media (min-width: ${breakpoints.desktop}) {
     position: static;
@@ -61,7 +61,7 @@ export const LoginButton = styled(Button)`
   padding: 8px 0;
   position: absolute;
   top: 1.2rem;
-  right: 5%;
+  right: 10%;
 
   @media (min-width: ${breakpoints.desktop}) {
     position: static;

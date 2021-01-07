@@ -4,12 +4,9 @@ import { useQuery } from 'react-query';
 import { httpService } from 'core/services';
 import { apiRoutes, itemsPerPage } from 'core/variablesConfig';
 import { createProductApiRequest, minutesToMs } from 'common/helpers';
-import { Loader } from 'common/components/Loader';
-import { Pagination } from 'common/components/Pagination';
-import { Header } from 'common/components/Header';
+import { Loader, Pagination, Empty, Header } from 'common/components';
 import { ProductCard } from './ProductCard';
 import { ContentWrapper, ItemsWrapper } from '../styles/Products';
-import { Empty } from 'common/components/Empty';
 
 interface ShopItem {
   id: number;
@@ -42,9 +39,31 @@ export const Products = () => {
     { keepPreviousData: true, staleTime: minutesToMs(10) },
   );
 
-  if (isLoading) return <Loader />;
+  if (isLoading) {
+    return (
+      <ContentWrapper>
+        <Header
+          active={{ isActive, setIsActive }}
+          promo={{ isPromo, setIsPromo }}
+          search={{ search, setSearch }}
+        />
+        <Loader />
+      </ContentWrapper>
+    );
+  }
 
-  if (isError) return <div>Something went wrong</div>;
+  if (isError) {
+    return (
+      <ContentWrapper>
+        <Header
+          active={{ isActive, setIsActive }}
+          promo={{ isPromo, setIsPromo }}
+          search={{ search, setSearch }}
+        />
+        <Empty />
+      </ContentWrapper>
+    );
+  }
 
   return (
     data && (

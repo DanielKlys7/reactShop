@@ -8,6 +8,8 @@ export interface ButtonProps {
   disabled?: boolean;
   isFilled?: boolean;
   className?: string;
+  onClick?: () => void;
+  type?: string;
 }
 
 export const Button: React.FunctionComponent<ButtonProps> = ({
@@ -15,8 +17,10 @@ export const Button: React.FunctionComponent<ButtonProps> = ({
   isFilled = true,
   disabled = false,
   className,
+  onClick,
 }) => (
   <StyledButton
+    onClick={onClick}
     className={className}
     isFilled={isFilled}
     disabled={disabled}

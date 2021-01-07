@@ -6,10 +6,11 @@ export const StyledLabel = styled.label`
   font-size: 1.4rem;
   display: flex;
   align-items: center;
-  margin-left: 5%;
+  margin-right: 1.6rem;
 
   @media (min-width: ${breakpoints.desktop}) {
     margin-left: 2.4rem;
+    margin-left: 5%;
   }
 `;
 

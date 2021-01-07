@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Label } from 'common/styles/SingleFormField';
+import { SingleFormFieldWrapper } from '../styles/SingleFormField';
+
 interface SingleFormFieldProps {
   fieldName: string;
   children: JSX.Element;
@@ -11,9 +14,8 @@ export const SingleFormField: React.FunctionComponent<SingleFormFieldProps> = ({
   children,
   label,
 }) => (
-  <div>
-    <label>
-      {label || fieldName}:{children}
-    </label>
-  </div>
+  <SingleFormFieldWrapper>
+    <Label>{label || fieldName}</Label>
+    {children}
+  </SingleFormFieldWrapper>
 );

@@ -6,12 +6,13 @@ export const ContentWrapper = styled.main`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 100%;
   align-items: center;
 `;
 
 export const ItemsWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
   margin: 0 auto;
   flex-wrap: wrap;

@@ -6,7 +6,9 @@ interface StyledButtonProps {
   isFirstOrLastElement?: boolean;
 }
 
-export const StyledNav = styled.nav``;
+export const StyledNav = styled.nav`
+  margin: auto 0 0 0;
+`;
 
 export const StyledUl = styled.ul`
   list-style: none;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { truncate } from 'common/helpers';
 import {
@@ -9,6 +9,7 @@ import {
   DetailsButton,
   PromoBanner,
 } from '../styles/ProductCard';
+import { ItemModal } from './Modal';
 import { Rating } from './Rating';
 
 export interface ProductCardProps {
@@ -27,13 +28,29 @@ export const ProductCard: React.FunctionComponent<ProductCardProps> = ({
   rating,
   isPromo,
   isActive,
-}) => (
-  <Wrapper>
-    <Image src={image} isActive={isActive} />
-    <Header>{name}</Header>
-    <Description>{truncate(description, 40)}</Description>
-    <Rating rating={rating} />
-    <DetailsButton disabled={!isActive}>Show details</DetailsButton>
-    {isPromo && <PromoBanner>Promo</PromoBanner>}
-  </Wrapper>
-);
+}) => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  return (
+    <Wrapper>
+      <Image src={image} isActive={isActive} />
+      <Header>{name}</Header>
+      <Description>{truncate(description, 40)}</Description>
+      <Rating rating={rating} />
+      <DetailsButton
+        disabled={!isActive}
+        onClick={() => setModalOpen(wasModalOpen => !wasModalOpen)}
+      >
+        Show details
+      </DetailsButton>
+      {isPromo && <PromoBanner>Promo</PromoBanner>}
+      <ItemModal
+        isOpen={isModalOpen}
+        setIsOpen={setModalOpen}
+        image={image}
+        name={name}
+        description={description}
+      />
+    </Wrapper>
+  );
+};

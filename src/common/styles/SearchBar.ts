@@ -4,8 +4,7 @@ import { breakpoints, colors } from 'core/variablesConfig';
 import { ReactComponent as Search } from 'common/assets/search.svg';
 
 export const SearchBarWrapper = styled.div`
-  width: 90%;
-  margin-left: 5%;
+  width: 100%;
   height: 48px;
   border-radius: 8px;
   overflow: hidden;
@@ -16,7 +15,8 @@ export const SearchBarWrapper = styled.div`
   align-items: center;
 
   @media (min-width: ${breakpoints.desktop}) {
-    width: 40%;
+    width: 25%;
+    margin-left: 5%;
   }
 `;
 
